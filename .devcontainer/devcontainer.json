@@ -1,0 +1,37 @@
+{
+  "name": "LangGraph Example",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {},
+  "initializeCommand": {
+    "claude": "mkdir -p ${HOME}/.claude",
+    "claude_json": "[ -f ${HOME}/.claude.json ] || echo '{}' > ${HOME}/.claude.json"
+  },
+  "postCreateCommand": "uv sync",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+  "forwardPorts": [8123],
+  "portsAttributes": {
+    "8123": {
+      "label": "LangGraph Studio",
+      "onAutoForward": "notify"
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind",
+    "source=${localEnv:HOME}/.claude.json,target=/home/vscode/.claude.json,type=bind"
+  ],
+  "remoteUser": "vscode"
+}
