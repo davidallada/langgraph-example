@@ -1,12 +1,10 @@
 """Library agent — a user-facing agent for a library with tools and a book search subagent."""
 
-import sqlite3
-
 from dotenv import load_dotenv
 from langchain_core.messages import SystemMessage
 from langchain_core.tools import tool as make_tool
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode, create_react_agent, tools_condition
 from langgraph.store.memory import InMemoryStore
@@ -104,7 +102,13 @@ Library Card: {card_number}
 """
 
 # ── Graph ────────────────────────────────────────────────────────────────────
+def query_snowflake(sql_query: str):
+    # authenticate to snowflake:
+    snowflake_connection = aws.connect_to_snowflake()
 
+    result = snowflake.query(sql_query, snowflake_connection)
+
+    return result
 
 def build_system_message() -> SystemMessage:
     return SystemMessage(content=SYSTEM_PROMPT)
@@ -128,8 +132,7 @@ builder.add_edge("tools", "agent")
 
 # ── Checkpointer & Store ────────────────────────────────────────────────────
 
-db_conn = sqlite3.connect("library_checkpoints.db", check_same_thread=False)
-checkpointer = SqliteSaver(db_conn)
+checkpointer = MemorySaver()
 store = InMemoryStore()
 
 graph = builder.compile(checkpointer=checkpointer, store=store)
