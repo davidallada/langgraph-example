@@ -5,7 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
+from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph, MessagesState, START
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.store.memory import InMemoryStore
@@ -79,7 +79,7 @@ async def make_graph():
     builder.add_edge("tools", "agent")
 
     # Checkpointer & store
-    checkpointer = AsyncSqliteSaver.from_conn_string("sql_explorer_checkpoints.db")
+    checkpointer = MemorySaver()
     store = InMemoryStore()
 
     return builder.compile(checkpointer=checkpointer, store=store)
