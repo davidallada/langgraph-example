@@ -177,7 +177,9 @@ cython_debug/
 
 # LangGraph
 .langgraph_api/
-library_checkpoints.db
+*.db
+*.db-shm
+*.db-wal
 
 # Abstra
 # Abstra is an AI-powered process automation framework.

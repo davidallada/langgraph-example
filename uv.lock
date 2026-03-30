@@ -717,19 +717,19 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "aiosqlite", specifier = ">=0.22.1" },
-    { name = "langchain-core", specifier = ">=1.2.17" },
-    { name = "langchain-mcp-adapters", specifier = ">=0.2.1" },
-    { name = "langchain-openai", specifier = ">=1.1.10" },
-    { name = "langgraph", specifier = ">=1.0.10" },
-    { name = "langgraph-checkpoint-sqlite", specifier = ">=3.0.3" },
-    { name = "langgraph-cli", extras = ["inmem"], specifier = ">=0.4.14" },
-    { name = "python-dotenv", specifier = ">=1.2.2" },
-    { name = "rich", specifier = ">=14.3.3" },
+    { name = "aiosqlite", specifier = "==0.22.1" },
+    { name = "langchain-core", specifier = "==1.2.17" },
+    { name = "langchain-mcp-adapters", specifier = "==0.2.1" },
+    { name = "langchain-openai", specifier = "==1.1.10" },
+    { name = "langgraph", specifier = "==1.0.10" },
+    { name = "langgraph-checkpoint-sqlite", specifier = "==3.0.3" },
+    { name = "langgraph-cli", extras = ["inmem"], specifier = "==0.4.14" },
+    { name = "python-dotenv", specifier = "==1.2.2" },
+    { name = "rich", specifier = "==14.3.3" },
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "ruff", specifier = ">=0.15.5" }]
+dev = [{ name = "ruff", specifier = "==0.15.5" }]
 
 [[package]]
 name = "langgraph-prebuilt"
