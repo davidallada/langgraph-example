@@ -3,7 +3,7 @@
 from dotenv import load_dotenv
 from langchain_core.messages import SystemMessage
 from langchain_core.tools import tool as make_tool
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode, create_react_agent, tools_condition
@@ -25,7 +25,7 @@ load_dotenv()
 
 # ── LLM ──────────────────────────────────────────────────────────────────────
 
-model = ChatOpenAI(model="gpt-4o-mini")
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite")
 
 # ── Search subagent (wrapped as a tool) ──────────────────────────────────────
 
