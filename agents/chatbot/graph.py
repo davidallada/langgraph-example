@@ -25,7 +25,7 @@ load_dotenv()
 
 # ── LLM ──────────────────────────────────────────────────────────────────────
 
-model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite")
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview")
 
 # ── Search subagent (wrapped as a tool) ──────────────────────────────────────
 

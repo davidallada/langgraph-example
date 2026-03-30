@@ -45,7 +45,7 @@ Guidelines:
 
 # ── LLM ──────────────────────────────────────────────────────────────────────
 
-model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite")
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview")
 
 # ── Graph (async factory — MCP client setup requires async) ──────────────────
 

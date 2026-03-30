@@ -47,7 +47,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 load_dotenv()
 
-model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite")
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview")
 
 # ── Tools ────────────────────────────────────────────────────────────────────
 
@@ -102,7 +102,7 @@ from langgraph.store.memory import InMemoryStore
 
 load_dotenv()
 
-model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite")
+model = ChatGoogleGenerativeAI(model="gemini-3.1-flash-lite-preview")
 
 SYSTEM_PROMPT = "You are a helpful assistant."
 
