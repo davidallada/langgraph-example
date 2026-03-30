@@ -4,7 +4,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph, MessagesState, START
 from langgraph.prebuilt import ToolNode, tools_condition
@@ -45,7 +45,7 @@ Guidelines:
 
 # ── LLM ──────────────────────────────────────────────────────────────────────
 
-model = ChatAnthropic(model="claude-sonnet-4-6")
+model = ChatOpenAI(model="gpt-4o-mini")
 
 # ── Graph (async factory — MCP client setup requires async) ──────────────────
 
