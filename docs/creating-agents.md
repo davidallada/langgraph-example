@@ -40,14 +40,14 @@ import sqlite3
 from dotenv import load_dotenv
 from langchain_core.messages import SystemMessage
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import StateGraph, MessagesState, START
 from langgraph.prebuilt import ToolNode, tools_condition
 
 load_dotenv()
 
-model = ChatOpenAI(model="gpt-4o-mini")
+model = ChatAnthropic(model="claude-sonnet-4-6")
 
 # ── Tools ────────────────────────────────────────────────────────────────────
 
@@ -94,7 +94,7 @@ Use this when your tools come from an MCP server or are otherwise async.
 
 from dotenv import load_dotenv
 from langchain_mcp_adapters.client import MultiServerMCPClient
-from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import StateGraph, MessagesState, START
 from langgraph.prebuilt import ToolNode, tools_condition
@@ -102,7 +102,7 @@ from langgraph.store.memory import InMemoryStore
 
 load_dotenv()
 
-model = ChatOpenAI(model="gpt-4o-mini")
+model = ChatAnthropic(model="claude-sonnet-4-6")
 
 SYSTEM_PROMPT = "You are a helpful assistant."
 
